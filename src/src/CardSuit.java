@@ -1,6 +1,19 @@
 public enum CardSuit {
-    Hearts,
-    Diamonds,
-    Clubs,
-    Spades
+    S("\u2660"),   // Unicode for Spades
+    H("\u2665"),   // Unicode for Hearts
+    D("\u2666"), // Unicode for Diamonds
+    C("\u2663");
+
+    private final String symbol;
+
+    // Enum constructor
+    CardSuit(String symbol) {
+        this.symbol = symbol;
+    }
+
+    // Override toString to return the symbol
+    @Override
+    public String toString() {
+        return this.symbol;
+    }
 }

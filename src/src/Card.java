@@ -22,9 +22,11 @@ public class Card {
 
     private void AddColor()
     {
-        if(Objects.equals(suit.toString(), constants.Hearts) || Objects.equals(suit.toString(), constants.Diamonds))
-            color = constants.Red;
-        else color = constants.Black;
+        if (suit == CardSuit.H || suit == CardSuit.D) {
+            color = RED;
+        } else {
+            color = BLACK;
+        }
     }
 
     public String getColor() {
@@ -42,10 +44,8 @@ public class Card {
     }
 
     public String toString() {
-        String redsuit = RED + rank.toString() + " of " + suit.toString() + ANSI_RESET;
-        String blacksuit = BLACK + rank.toString() + " of " + suit.toString() + ANSI_RESET;
 
-        return Objects.equals(color,constants.Red) ? redsuit : blacksuit;
+        return  rank.toString() + "of" + suit.toString() ;
     }
 
 
