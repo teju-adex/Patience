@@ -1,13 +1,6 @@
-import java.util.Objects;
-
 public class Card {
-    // Declaring ANSI_RESET so that we can reset the color
-    public static final String ANSI_RESET = "\u001B[0m";
     Constants constants = new Constants();
-    // Declaring the color
-    // Custom declaration
-    public static final String RED = "\u001B[31m";
-    public static final String BLACK = "\u001B[30m";
+
 
     private final CardSuit suit;
     private final CardRank rank;
@@ -17,15 +10,15 @@ public class Card {
     {
         this.suit = Suit;
         this.rank = rank;
-        AddColor();
+        addColor(); // Set the card color based on its suit
     }
-
-    private void AddColor()
+    // Assign color based on the suit
+    private void addColor()
     {
         if (suit == CardSuit.H || suit == CardSuit.D) {
-            color = RED;
+            color = constants.Red; // Red for hearts and diamonds
         } else {
-            color = BLACK;
+            color = constants.Black; // Black for clubs and spades
         }
     }
 
@@ -43,9 +36,10 @@ public class Card {
         return rank.getValue();
     }
 
+    // Override toString to display the card as "Rank of Suit"
     public String toString() {
 
-        return  rank.toString() + "of" + suit.toString() ;
+        return  rank.toString() + " of " + suit.toString() ;
     }
 
 

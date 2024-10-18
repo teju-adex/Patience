@@ -1,34 +1,35 @@
 import java.util.Stack;
 
+// Lane class has 2 stacks for uncovered and covered cards in each lane.
 public class Lane {
 
     private Stack<Card> uncovered = new Stack<>();
     private Stack<Card> covered = new Stack<>();
 
-    public Stack<Card> GetCovered() {
+    public Stack<Card> getCovered() {
         return covered;
     }
 
-    public Stack<Card> GetUncovered() {
+    public Stack<Card> getUncovered() {
         return uncovered;
     }
 
-    public void AddCoveredCard(Card card) {
+    public void addCoveredCard(Card card) {
         covered.push(card);
     }
 
-    public void AddUncoveredCard(Card card) {
+    public void addUncoveredCard(Card card) {
         uncovered.push(card);
     }
 
-    public Card GetTopUncovered() {
+    public Card getTopUncovered() {
         return uncovered.isEmpty() ? null : uncovered.peek();
     }
-    public Card RemoveTopUncovered() {
+    public Card removeTopUncovered() {
         return uncovered.isEmpty() ? null : uncovered.pop();
     }
 
-    public void CoveredToUncoveredTopCard() {
+    public void coveredToUncoveredTopCard() {
         if(!covered.isEmpty()) {
             uncovered.push(covered.pop());
         }
@@ -40,10 +41,6 @@ public class Lane {
 
     public boolean hasUncoveredCards() {
         return !uncovered.isEmpty();
-    }
-
-    public boolean hasCoveredCards() {
-        return !covered.isEmpty();
     }
 
 }

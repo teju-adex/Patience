@@ -16,4 +16,8 @@ public enum CardSuit {
     public String toString() {
         return this.symbol;
     }
+
+    public String getKey() {
+        return this.name(); // This returns the enum constant name (H, S, D, C)
+    }
 }

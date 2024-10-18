@@ -2,9 +2,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+
+public class GameTest {
 
      public static void main(String[] args) {
 
@@ -15,33 +14,38 @@ public class Main {
          printStartUpMessage();
 
          Scanner in = new Scanner(System.in);
-
         Game game = new Game(); // Initialise game
+
         boolean stillPlaying = true;
         while(stillPlaying)
         {
-            System.out.print("\nEnter a command: ");
+            printAvailableCommands();
+            System.out.print("\nUser Input: ");
             String userInput = in.nextLine();
+
+            // Match user input to commands
             Matcher onecardmatch = pattern1.matcher(userInput);
             Matcher multicardmatch = pattern2.matcher(userInput);
+
             switch (userInput.toUpperCase())
             {
                 case "Q":
                     stillPlaying = false;
                     break;
                 case "D":
-                    game.DrawCard();
+                    game.drawCard();
                     break;
                 default:
                     if(onecardmatch.matches())
-                        game.GetCardToBeMoved(onecardmatch.group());
-                    else if (multicardmatch.matches()) game.GetCardsToBeMoved(multicardmatch.group());
+                        game.getCardToBeMoved(onecardmatch.group());
+                    else if (multicardmatch.matches()) game.getCardsToBeMoved(multicardmatch.group());
                     else {
                         System.out.println("Invalid command entered");
+                        game.printBoard();
                     }
             }
 
-            if(game.GameOver())
+            if(game.isGameOver())
             {
                 System.out.println("Game Over, Congratulations you've won!");
                 stillPlaying = false;
@@ -49,14 +53,12 @@ public class Main {
         }
 
         System.out.println("Thanks for playing!");
-        System.out.println("Moves: " + game.GetMoves());
-        System.out.println("Score: " + game.GetScore());
+        System.out.println("Moves: " + game.scoreKeeper.getMoves());
+        System.out.println("Score: " + game.scoreKeeper.getScore());
 
     }
 
-    private static void printStartUpMessage() {
-        System.out.println("*******************************************************************************************");
-        System.out.print("Welcome to Solitaire!\n\n");
+    private static void printAvailableCommands() {
         System.out.println("The uncovered pile is labelled 'P'");
         System.out.println("Card lanes are numbered 1-7");
         System.out.println("Suite piles: D (diamonds), H (hearts), C (clubs) and S (spades)");
@@ -66,6 +68,12 @@ public class Main {
         System.out.println("\t<label1><label2> = move onecard from <label1> to <label2>. E.g. “P2” or “2D”");
         System.out.println("\t<label1><label2><number> = move <number> cards from <label1> to <label2>. E.g. “413”.");
         System.out.println();
+    }
+
+    private static void printStartUpMessage() {
+        System.out.println("*******************************************************************************************");
+        System.out.print("Welcome to Solitaire!\n\n");
+       printAvailableCommands();
         System.out.println("*******************************************************************************************");
         System.out.println("\n\n");
     }
