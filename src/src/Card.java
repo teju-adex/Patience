@@ -1,7 +1,5 @@
 public class Card {
     Constants constants = new Constants();
-
-
     private final CardSuit suit;
     private final CardRank rank;
     private String color;

@@ -1,8 +1,8 @@
 public enum CardSuit {
-    S("\u2660"),   // Unicode for Spades
-    H("\u2665"),   // Unicode for Hearts
-    D("\u2666"), // Unicode for Diamonds
-    C("\u2663");
+    S("S"),
+    H("H"),
+    D("D"),
+    C("C");
 
     private final String symbol;
 

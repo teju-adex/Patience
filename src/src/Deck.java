@@ -6,7 +6,6 @@ public class Deck {
 
     public ArrayList<Card> fillDeck()
     {
-        int i = 0;
         for (CardSuit suit : CardSuit.values())
         {
             for(CardRank value : CardRank.values())
