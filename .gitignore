@@ -1,0 +1,26 @@
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# Ignore compiled class files
+*.class
+
+# Ignore log files
+*.log
+
+# Ignore build directories
+out/
+bin/
+build/
+
+# Ignore JAR/WAR files
+*.jar
+*.war
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Maven/Gradle build artifacts
+target/
+.gradle/
+.mvn/
